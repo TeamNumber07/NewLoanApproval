@@ -25,7 +25,7 @@ public class ExpenditureDao {
 			boolean flag = false;
 			try {
 				Connection con = mcon.getConn();
-				String query = "insert into user_expenditure(previous_loan, previous_loan_amount,loan_duration,remaining_time_period,emi,pending_amount,yearly_expenditure )values(?,?,?,?,?,?,?) ";
+				String query = "insert into expenditure_details(previous_loan, previous_loan_amount,loan_duration,remaining_time_period,emi,pending_amount,yearly_expenditure )values(?,?,?,?,?,?,?) ";
 				
 				PreparedStatement ps = con.prepareStatement(query);
 				
@@ -56,7 +56,7 @@ public class ExpenditureDao {
 			ExpenditureDetails e = new ExpenditureDetails();
 			
 			Connection con = mcon.getConn();
-			String query = "select * from user_expenditure where userid=?";
+			String query = "select * from expenditure_details where userid=?";
 			PreparedStatement ps = con.prepareStatement(query);
 			
 			ps.setInt(1, ed.getUserId());
@@ -86,7 +86,7 @@ public class ExpenditureDao {
 			
 			try {
 				Connection con = mcon.getConn();
-				PreparedStatement s = con.prepareStatement("select * from user_expenditure");
+				PreparedStatement s = con.prepareStatement("select * from expenditure_details");
 				ResultSet rs = s.executeQuery();
 				while (rs.next()) {
 					ExpenditureDetails ed = new ExpenditureDetails();
